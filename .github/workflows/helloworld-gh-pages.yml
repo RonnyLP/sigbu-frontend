@@ -29,12 +29,12 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build --base-href "/sigbu-frontend/" --deploy-url "/sigbu-frontend/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist  # cambia si tu carpeta de build es otra
+          path: dist/sigbu-frontend/browser  # cambia si tu carpeta de build es otra
 
   deploy:
     runs-on: ubuntu-latest
