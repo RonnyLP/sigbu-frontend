@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { BienDto } from '../../interfaces/bien-dto';
 import { BienesService } from '../../services/bienes-service';
 import { BienesReporteEntradaDto } from '../../interfaces/bienes-reporte-entrada-dto';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-bienes-reporte-entrada-page',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './bienes-reporte-entrada-page.html',
   styleUrls: ['./bienes-reporte-entrada-page.css'],
 })

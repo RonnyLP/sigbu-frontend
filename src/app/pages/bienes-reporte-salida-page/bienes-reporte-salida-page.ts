@@ -5,11 +5,12 @@ import { AreaDto } from '../../interfaces/area-dto';
 import { BienDto } from '../../interfaces/bien-dto';
 import { AreasService } from '../../services/areas-service';
 import { BienesService } from '../../services/bienes-service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-bienes-reporte-salida-page',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './bienes-reporte-salida-page.html',
   styleUrls: ['./bienes-reporte-salida-page.css'],
 })

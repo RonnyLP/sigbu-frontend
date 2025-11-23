@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { AreaDto } from '../../interfaces/area-dto';
 import { FormsModule } from '@angular/forms';
 import { AreasService } from '../../services/areas-service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-areas-consulta-page',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './areas-consulta-page.html',
   styleUrl: './areas-consulta-page.css',
 })
