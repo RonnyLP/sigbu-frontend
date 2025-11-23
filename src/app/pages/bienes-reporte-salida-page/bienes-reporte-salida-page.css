@@ -1,0 +1,17 @@
+:root{
+	--modal-bg: rgba(0,0,0,0.45);
+}
+.page{padding:16px}
+.form-row{margin:8px 0;display:flex;gap:8px;align-items:center}
+select{padding:6px}
+.items-list{list-style:none;padding:0;margin:12px 0}
+.items-list li{padding:6px 0;border-bottom:1px solid #eee}
+.actions{margin-top:12px}
+.actions button{padding:8px 12px}
+
+.modal-backdrop{position:fixed;inset:0;background:var(--modal-bg);display:flex;align-items:center;justify-content:center}
+.modal{background:#fff;padding:18px;border-radius:6px;min-width:280px;box-shadow:0 8px 20px rgba(0,0,0,0.2)}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.modal-actions .confirm{background:#c0392b;color:#fff;border:none;padding:8px 12px;border-radius:4px}
+
+.empty{color:#777;margin-top:12px}

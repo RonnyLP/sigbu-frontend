@@ -1,0 +1,49 @@
+<a href="/areas-dashboard">Volver</a>
+
+<h1>Consultar área</h1>
+
+
+<form (ngSubmit)="buscar()" #buscarForm="ngForm" class="search-form">
+  <label for="codigo">Código</label>
+  <input id="codigo" name="codigo" [(ngModel)]="codigoBusqueda" required />
+  <button type="submit" [disabled]="buscarForm.invalid">Buscar</button>
+</form>
+
+
+
+@if (resultado != undefined) {
+  <div class="resultado-card">
+    <h2>Resultado</h2>
+
+    <div class="field">
+      <label for="res-codigo">Área</label>
+      <input id="res-codigo" [value]="resultado.nombre" readonly />
+    </div>
+
+    <div class="field">
+      <label for="res-serie">Responsable</label>
+      <input id="res-serie" [value]="resultado.responsable" readonly />
+    </div>
+
+
+    
+    <div class="field">
+      <label for="res-color">Dependencia</label>
+      <input id="res-color" [value]="resultado.dependencia" readonly />
+    </div>
+
+    
+    <div class="field">
+      <label for="res-ubicacion">Ubicación</label>
+      <input id="res-ubicacion" [value]="resultado.ubicacion" readonly />
+    </div>
+
+
+    <div class="field">
+      <label for="res-descripcion">Descripción</label>
+      <textarea id="res-descripcion" [value]="resultado.descripcion" readonly rows="3"></textarea>
+    </div>
+
+  </div>
+}
+

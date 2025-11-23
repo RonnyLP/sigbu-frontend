@@ -1,0 +1,99 @@
+<a href="/bienes-dashboard">Volver</a>
+
+<h1>Reporte de entrada de bienes</h1>
+
+
+<div>
+  <button (click)="openAdd()">Agregar</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Serie</th>
+      <th>Descripción</th>
+      <th>Oficina</th>
+      <th>Ubicación</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    @for (it of items; track $index) {
+      <tr>
+        <td>{{ it.codigo }}</td>
+        <td>{{ it.serie }}</td>
+        <td>{{ it.descripcion }}</td>
+        <td>{{ it.oficina }}</td>
+        <td>{{ it.ubicacion }}</td>
+        <td>{{ it.estado }}</td>
+        <td>
+          <button (click)="openEdit($index)">Editar</button>
+          <button (click)="remove($index)">Eliminar</button>
+        </td>
+      </tr>
+    }
+    @if (items.length == 0) {
+      <tr>
+        <td colspan="7">No hay bienes agregados.</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div style="margin-top: 1rem;">
+  <button [disabled]="items.length === 0" (click)="openGenerateReport()">Generar reporte</button>
+</div>
+
+<!-- Add / Edit dialog (simple, sin estilos) -->
+<div *ngIf="showAddDialog" class="dialog">
+  <h3>{{ editingIndex === null ? 'Agregar bien' : 'Editar bien' }}</h3>
+
+  <div>
+    <label>Código: <input [(ngModel)]="form.codigo" /></label>
+  </div>
+  <div>
+    <label>Serie: <input [(ngModel)]="form.serie" /></label>
+  </div>
+  <div>
+    <label>Descripción: <input [(ngModel)]="form.descripcion" /></label>
+  </div>
+  <div>
+    <label>Color: <input [(ngModel)]="form.color" /></label>
+  </div>
+  <div>
+    <label>Oficina: <input [(ngModel)]="form.oficina" /></label>
+  </div>
+  <div>
+    <label>Ubicación: <input [(ngModel)]="form.ubicacion" /></label>
+  </div>
+  <div>
+    <label>Estado: <input [(ngModel)]="form.estado" /></label>
+  </div>
+
+  <div style="margin-top: 0.5rem;">
+    <button (click)="save()">Guardar</button>
+    <button (click)="showAddDialog = false">Cancelar</button>
+  </div>
+</div>
+
+<!-- Report dialog -->
+
+@if (showReportDialog) {
+  <div class="dialog">
+    <h3>Generar Reporte de Entrada</h3>
+    <div>
+      <textarea [(ngModel)]="reportSustento" rows="6" cols="60" placeholder="Escribe el sustento aquí..."></textarea>
+    </div>
+    <div style="margin-top: 0.5rem;">
+      <button (click)="sendReport()">Enviar</button>
+      <button (click)="showReportDialog = false">Cancelar</button>
+    </div>
+  </div>
+}
+
+  
+
+

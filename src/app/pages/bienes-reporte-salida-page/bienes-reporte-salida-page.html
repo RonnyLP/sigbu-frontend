@@ -1,0 +1,39 @@
+
+<div class="page">
+  <a href="/bienes-dashboard">volver</a>
+	<h2>Reporte de Salida</h2>
+
+	<div class="form-row">
+		<label for="oficina">Oficina</label>
+		<select id="oficina" [(ngModel)]="selectedArea" (change)="onAreaChange()">
+			<option value="">-- Seleccionar oficina --</option>
+			<option *ngFor="let a of areas" [value]="a.nombre">{{ a.nombre }} - {{ a.responsable }}</option>
+		</select>
+	</div>
+
+	<div *ngIf="items.length === 0" class="empty">No hay bienes para la oficina seleccionada.</div>
+
+	<ul *ngIf="items.length > 0" class="items-list">
+		<li *ngFor="let b of items">
+			<input type="checkbox" [(ngModel)]="selectedMap[b.codigo]" id="chk-{{b.codigo}}" />
+			<label for="chk-{{b.codigo}}">{{ b.codigo }} — {{ b.descripcion }} ({{ b.ubicacion }})</label>
+		</li>
+	</ul>
+
+	<div class="actions">
+		<button (click)="openGenerateReport()" [disabled]="countSelected() === 0">Generar reporte ({{ countSelected() }})</button>
+	</div>
+
+	<div class="modal-backdrop" *ngIf="showConfirmDialog">
+		<div class="modal">
+			<h3>Confirmar solicitud</h3>
+			<p>Se eliminarán {{ countSelected() }} bienes. ¿Confirmar solicitud?</p>
+			<div class="modal-actions">
+				<button class="confirm" (click)="confirmRequest()">Confirmar Solicitud</button>
+				<button (click)="cancelConfirm()">Cancelar</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+
